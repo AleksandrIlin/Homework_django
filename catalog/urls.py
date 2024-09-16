@@ -1,4 +1,3 @@
-from operator import index
 from django.urls import path
 from catalog.apps import CatalogConfig
 from catalog.views import home, contacts
