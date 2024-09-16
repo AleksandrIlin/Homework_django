@@ -1,0 +1,117 @@
+[
+{
+    "model": "catalog.category",
+    "pk": 6,
+    "fields": {
+        "name": "Одежда",
+        "description": "Одежда для спорта"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 7,
+    "fields": {
+        "name": "Телефон",
+        "description": "Телефоны(Смартфон)"
+    }
+},
+{
+    "model": "catalog.category",
+    "pk": 8,
+    "fields": {
+        "name": "Электроника",
+        "description": "Электроника для дома"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "name": "Футболка",
+        "description": "Футболка хлопковая",
+        "image": "",
+        "category": 6,
+        "price": "299.00",
+        "created_at": "2024-09-13T18:59:30.507Z",
+        "updated_at": "2024-09-13T18:59:30.507Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+        "name": "Костюм",
+        "description": "Костюм спортивный для лекгой атлетики",
+        "image": "",
+        "category": 6,
+        "price": "3200.00",
+        "created_at": "2024-09-13T18:59:40.795Z",
+        "updated_at": "2024-09-13T19:17:26.044Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+        "name": "Штаны",
+        "description": "Штаны спортивные для лекгой атлетики",
+        "image": "",
+        "category": 6,
+        "price": "1999.00",
+        "created_at": "2024-09-13T18:59:48.722Z",
+        "updated_at": "2024-09-13T18:59:48.722Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+        "name": "Samsung A20",
+        "description": "Смартфон Samsung",
+        "image": "",
+        "category": 7,
+        "price": "6999.00",
+        "created_at": "2024-09-13T19:04:21.088Z",
+        "updated_at": "2024-09-13T19:04:21.088Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+        "name": "Nokia G42",
+        "description": "Смартфон Nokia",
+        "image": "",
+        "category": 7,
+        "price": "5999.00",
+        "created_at": "2024-09-13T19:05:51.477Z",
+        "updated_at": "2024-09-13T19:05:51.477Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 14,
+    "fields": {
+        "name": "LG 65UR91006LA",
+        "description": "4K Smart UHD телевизор 65 LG 65UR91006LA",
+        "image": "",
+        "category": 8,
+        "price": "59990.00",
+        "created_at": "2024-09-13T19:09:46.093Z",
+        "updated_at": "2024-09-13T19:09:46.093Z"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 15,
+    "fields": {
+        "name": "Toshiba 65C350LE",
+        "description": "4K Smart UHD телевизор 65 Toshiba 65C350LE",
+        "image": "",
+        "category": 8,
+        "price": "49990.00",
+        "created_at": "2024-09-13T19:10:48.890Z",
+        "updated_at": "2024-09-13T19:10:48.890Z"
+    }
+}
+]
