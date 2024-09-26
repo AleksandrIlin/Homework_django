@@ -1,0 +1,16 @@
+{% extends 'home.html'%}
+{% load my_tags %}
+{% block content %}
+<div class="row text-center">
+        <div class="card" style="width: 18rem;">
+            <img src="{{ product.image | media_filter }}" class="card-img-top" alt="product">
+            <div class="card-body">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <h4 class="card-text">{{ product.price }}</h4>
+                <p class="card-text">{{ product.description|truncatechars:100 }}</p>
+                <a href="#" class="btn btn-primary">Купить</a>
+            </div>
+        </div>
+</div>
+{% endblock %}
+
