@@ -1,11 +1,13 @@
 from urllib import request
 
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 
+from catalog.forms import ProductForm
 from catalog.models import Category, Product
+from django.urls import reverse_lazy
 
 
 class CatalogCategoryListView(ListView):
@@ -23,6 +25,26 @@ class CatalogProductListView(ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'product_list'
+
+
+class CatalogProductCreateView(CreateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_create.html'
+    success_url = reverse_lazy('catalog:home')
+
+
+class CatalogProductUpdateView(UpdateView):
+    model = Product
+    form_class = ProductForm
+    template_name = 'catalog/product_create.html'
+    success_url = reverse_lazy('catalog:home')
+
+
+class CatalogProductDeleteView(DeleteView):
+    model = Product
+    template_name = 'catalog/product_delete.html'
+    success_url = reverse_lazy('catalog:home')
 
 
 class CatalogProductDetailView(DetailView):
