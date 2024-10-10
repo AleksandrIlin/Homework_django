@@ -35,6 +35,23 @@ class ProductForm(forms.ModelForm):
             'placeholder': 'Введите стоимость продукта'
         })
 
+    def clean(self):
+        cleaned_data = super().clean()
+        name = cleaned_data.get('name')
+        description = cleaned_data.get('description')
+
+        if name.lower() and description.lower() in ['казино',
+                                                    'криптовалюта',
+                                                    'крипта',
+                                                    'биржа',
+                                                    'дешево',
+                                                    'бесплатно',
+                                                    'обман',
+                                                    'полиция',
+                                                    'радар']:
+            self.add_error('name', 'запрещенное слово')
+            self.add_error('description', 'запрещенное слово')
+
     def clean_price(self):
         cleaned_data = super().clean()
         price = cleaned_data.get('price')
