@@ -10,6 +10,8 @@
                 <p class="card-text">{{ product.description|truncatechars:100 }}</p>
                 <p class="card-text">{{ product.category}}</p>
                 <a href="#" class="btn btn-primary">Купить</a>
+                <a href="{% url 'catalog:product_update' product.id %}" class="btn btn-secondary">Редактировать</a>
+                <a href="{% url 'catalog:product_update' product.id %}" class="btn btn-danger">Удалить</a>
                 <a href="{% url 'catalog:category_list' %}" class="btn btn-primary">Назад к списку категорий</a>
             </div>
         </div>
