@@ -71,7 +71,7 @@ class ProductForm(forms.ModelForm):
         if image.size > 5 * 1024 * 1024:
             raise forms.ValidationError('Размер файла не должен превышать 5MB.')
 
-        if image.name.endswith(('jpg', 'jpeg', 'png')):
+        if not image.name.endswith(('jpg', 'jpeg', 'png')):
             raise forms.ValidationError('Формат файла не соответствует требованиям. '
                                         'Формат файла должен быть *.jpg, *.jpeg, *.png')
 
