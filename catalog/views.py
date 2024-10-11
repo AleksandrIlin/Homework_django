@@ -31,20 +31,20 @@ class CatalogProductCreateView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_create.html'
-    success_url = reverse_lazy('catalog:home')
+    success_url = reverse_lazy('catalog:product_list')
 
 
 class CatalogProductUpdateView(UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_create.html'
-    success_url = reverse_lazy('catalog:home')
+    success_url = reverse_lazy('catalog:product_list')
 
 
 class CatalogProductDeleteView(DeleteView):
     model = Product
     template_name = 'catalog/product_delete.html'
-    success_url = reverse_lazy('catalog:home')
+    success_url = reverse_lazy('catalog:product_list')
 
 
 class CatalogProductDetailView(DetailView):
