@@ -76,4 +76,3 @@ class ProductForm(forms.ModelForm):
                                         'Формат файла должен быть *.jpg, *.jpeg, *.png')
 
         return image
-
