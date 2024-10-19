@@ -9,7 +9,7 @@ from django.conf import settings
 class RegisterView(CreateView):
     form_class = RegisterUserCreationForm
     template_name = 'users/register.html'
-    success_url = reverse_lazy("catalog:product_list")
+    success_url = reverse_lazy("catalog:category_list")
 
     def form_valid(self, form):
         user = form.save()

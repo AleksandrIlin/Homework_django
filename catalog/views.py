@@ -3,9 +3,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin
-from catalog.forms import ProductForm
+from catalog.forms import ProductForm, ProductModeratorForm
 from catalog.models import Category, Product
 from django.urls import reverse_lazy
+from django.core.exceptions import PermissionDenied
 
 
 class CatalogCategoryListView(ListView):
@@ -29,20 +30,37 @@ class CatalogProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_create.html'
-    success_url = reverse_lazy('catalog:product_list')
+    success_url = reverse_lazy('catalog:category_list')
+
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
+        product.owner = user
+        product.save()
+        return super().form_valid(form)
 
 
 class CatalogProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     template_name = 'catalog/product_create.html'
-    success_url = reverse_lazy('catalog:product_list')
+    success_url = reverse_lazy('catalog:category_list')
+
+    def get_form_class(self):
+        user = self.request.user
+        if user == self.object.owner:
+            return ProductForm
+        if user.has_perm('catalog.can_unpublish_product'):
+            return ProductModeratorForm
+        raise PermissionDenied
 
 
 class CatalogProductDeleteView(LoginRequiredMixin, DeleteView):
     model = Product
     template_name = 'catalog/product_delete.html'
-    success_url = reverse_lazy('catalog:product_list')
+    success_url = reverse_lazy('catalog:category_list')
+
+
 
 
 class CatalogProductDetailView(LoginRequiredMixin, DetailView):
