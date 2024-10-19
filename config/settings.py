@@ -140,7 +140,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'users.CustomUser'
 
 LOGIN_REDIRECT_URL = "/catalog/"
-LOGOUT_REDIRECT_URL = "/catalog/"
+LOGOUT_REDIRECT_URL = "{{% url 'catalog:category_list' %}}"
 
 EMAIL_BACKEND = os.getenv('EMAIL_BACKEND')
 EMAIL_HOST = os.getenv('EMAIL_HOST')
