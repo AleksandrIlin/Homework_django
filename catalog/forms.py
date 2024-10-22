@@ -7,7 +7,7 @@ class ProductForm(forms.ModelForm):
     """Форма модели продукт"""
     class Meta:
         model = Product
-        fields = "__all__"
+        exclude = ('owner', 'publication_status',)
 
     def __init__(self, *args, **kwargs):
         super(ProductForm, self).__init__(*args, **kwargs)
@@ -76,3 +76,9 @@ class ProductForm(forms.ModelForm):
                                         'Формат файла должен быть *.jpg, *.jpeg, *.png')
 
         return image
+
+
+class ProductModeratorForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['publication_status']

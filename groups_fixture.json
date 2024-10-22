@@ -1,0 +1,10 @@
+[
+    {
+        "id": 1,
+        "name": "Moderators Product",
+        "permissions": [
+            "can_unpublish_product",
+            "delete_product"
+        ]
+    }
+]
