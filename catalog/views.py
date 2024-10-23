@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.views import View
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -9,6 +9,8 @@ from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect
 
+from catalog.services import get_products_by_category, get_products_from_cache
+
 
 class CatalogCategoryListView(ListView):
     model = Category
@@ -16,15 +18,24 @@ class CatalogCategoryListView(ListView):
     context_object_name = 'category_list'
 
 
-def product_list(request, category_name):
-    products = Product.objects.filter(category__name=category_name)
-    return render(request, 'catalog/product_list.html', {'object_list': products})
+class CatalogProductByCategoryView(View):
+    model = Category
+
+    def get(self, request, category_name):
+        category = get_object_or_404(Category, name=category_name)
+        products = get_products_by_category(category_name)
+
+        return render(request, 'catalog/category_products.html',
+                      {'category': category, 'products': products})
 
 
 class CatalogProductListView(ListView):
     model = Product
     template_name = 'catalog/product_list.html'
     context_object_name = 'product_list'
+
+    def get_queryset(self):
+        return get_products_from_cache()
 
 
 class CatalogProductCreateView(LoginRequiredMixin, CreateView):
